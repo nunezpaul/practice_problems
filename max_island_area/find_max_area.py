@@ -1,9 +1,9 @@
 class Pos(object):
-    def __init__(self, x, y, grid, n):
+    def __init__(self, x, y, grid, side_len):
         self.x = x
         self.y = y
         self.val = grid[self.y][self.x]
-        self.side_len = n
+        self.side_len = side_len
         self.num_moves = 0
         if self.val > 0:
             grid[self.y][self.x] = 0
@@ -44,15 +44,15 @@ class Pos(object):
         return None
 
 def max_island(grid):
-    n = len(grid)
-    max_count = 0
-    for j in range(n):
-        for i in range(n):
-            cur_pos = Pos(x=i, y=j, grid=grid, n=n)
+    side_len = len(grid)
+    max_area = 0
+    for j in range(side_len):
+        for i in range(side_len):
+            cur_pos = Pos(x=i, y=j, grid=grid, side_len=side_len)
             if cur_pos.val == 1:
-                result = dfs(cur_pos, grid) + 1
-                max_count = max(max_count, result)
-    return max_count
+                area = dfs(cur_pos, grid) + 1
+                max_area = max(max_area, area)
+    return max_area
 
 def dfs(cur_pos, grid):
     moves = cur_pos.moves
@@ -69,4 +69,13 @@ if __name__ == '__main__':
         [0, 0, 1, 0, 1],
         [0, 0, 0, 0, 1]
     ]
-    print(max_island(grid))
+    print(max_island(grid))  # 6
+
+    grid = [
+        [1, 0, 0, 0, 1],
+        [1, 1, 1, 0, 1],
+        [0, 0, 1, 0, 1],
+        [0, 0, 1, 1, 1],
+        [0, 0, 0, 0, 1]
+    ]
+    print(max_island(grid))  # 12
