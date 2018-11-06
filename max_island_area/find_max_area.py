@@ -1,18 +1,3 @@
-# 1 0 0 0
-# 1 1 0 0
-# 0 0 0 0
-# 0 0 1 1
-
-# connected horizontal and vertical
-# find the largest island
-# depth first search
-# 0, 0. -> 0
-# 1, 0 -> 1 -> 0
-# -> find 1, 1 -> 0
-
-# [[ ] * n] * n
-# shape is a square
-
 class Pos(object):
     def __init__(self, x, y, grid, n):
         self.x = x
@@ -58,7 +43,6 @@ class Pos(object):
             return Pos(new_x, self.y, grid, self.side_len)
         return None
 
-
 def max_island(grid):
     n = len(grid)
     max_count = 0
@@ -66,10 +50,9 @@ def max_island(grid):
         for i in range(n):
             cur_pos = Pos(x=i, y=j, grid=grid, n=n)
             if cur_pos.val == 1:
-                result = dfs(cur_pos, grid) + 1 # search logic
+                result = dfs(cur_pos, grid) + 1
                 max_count = max(max_count, result)
     return max_count
-
 
 def dfs(cur_pos, grid):
     moves = cur_pos.moves
