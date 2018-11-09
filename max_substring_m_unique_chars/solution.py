@@ -8,10 +8,10 @@ class StringQueue(object):
         self.max_length = 0
 
     def add_char(self, char):
-        seen_before = char in self.last_unique_chars_pos
+        char_seen_before = char in self.last_unique_chars_pos
         can_add_another_unique = self.num_unique_chars + 1 <= self.max_allowable_unique_chars
-        if seen_before or can_add_another_unique:
-            self.num_unique_chars += 1 if not seen_before else 0
+        if char_seen_before or can_add_another_unique:
+            self.num_unique_chars += 1 if not char_seen_before else 0
             self.string.append(char)
             self.length += 1
             self.last_unique_chars_pos[char] = self.length - 1
