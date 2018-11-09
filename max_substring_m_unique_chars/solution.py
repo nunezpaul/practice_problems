@@ -8,10 +8,10 @@ class StringQueue(object):
         self.max_length = 0
 
     def add_char(self, char):
-        check1 = char in self.last_unique_chars_pos
-        check2 = self.num_unique_chars + 1 <= self.max_allowable_unique_chars
-        if check1 or check2:
-            self.num_unique_chars += 1 if not check1 else 0
+        seen_before = char in self.last_unique_chars_pos
+        can_add_another_unique = self.num_unique_chars + 1 <= self.max_allowable_unique_chars
+        if seen_before or can_add_another_unique:
+            self.num_unique_chars += 1 if not seen_before else 0
             self.string.append(char)
             self.length += 1
             self.last_unique_chars_pos[char] = self.length - 1
@@ -37,7 +37,6 @@ class StringQueue(object):
     def _update_internal_values(self, key_to_remove, reset_val):
         for key, val in self.last_unique_chars_pos.items():
             self.last_unique_chars_pos[key] = val - reset_val
-
         self.string = self.string[reset_val:]
         self.last_unique_chars_pos.pop(key_to_remove)
         self.num_unique_chars -= 1
