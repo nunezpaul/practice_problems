@@ -22,7 +22,6 @@ class WaterArea(object):
                 left_max = num
                 max_idx = idx
 
-
         if max_idx is not None:
             return max_idx, left_max
         return start_idx, self.nums[start_idx]
