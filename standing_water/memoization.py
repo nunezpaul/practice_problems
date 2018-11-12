@@ -82,6 +82,6 @@ def test_water_area():
 
 if __name__ == '__main__':
     nums = [int(i) for i in list('413533253221321')]
-    # test_water_area()
+    test_water_area()
     answer = solution(nums)
     assert 15 == answer
