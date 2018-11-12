@@ -53,9 +53,8 @@ class WaterArea(object):
             self.prev_left_idx = self.prev_right_idx
             self.prev_right_idx = right_idx
 
-        idxes_to_store = [idx for idx in range(self.prev_left_idx + 1, right_idx + 1)]
-        num_heights = right_idx - self.prev_left_idx
-        self.heights = (dict(zip(idxes_to_store, [height] * num_heights)))
+        for idx in range(self.prev_left_idx + 1, right_idx + 1):
+            self.heights[idx] = height
 
 def solution(nums):
     water_area = WaterArea(nums)
