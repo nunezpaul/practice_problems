@@ -4,15 +4,13 @@ Given a string you need to print the length of the longest possible substring th
   Examples:
 
       "aabbcc", k = 1
-      Max substring can be any one from {"aa" , "bb" , "cc"}.
+      answer = 2
 
       "aabbcc", k = 2
-      Max substring can be any one from {"aabb" , "bbcc"}.
+      answer = 4
 
       "aabbcc", k = 3
-      There are substrings with exactly 3 unique characters
-      {"aabbcc" , "abbcc" , "aabbc" , "abbc" }
-      Max is "aabbcc" with length 6.
+      answer = 6
 
       "aaabbb", k = 3
-      There are only two unique characters, thus show error message. 
+      answer = 6 
