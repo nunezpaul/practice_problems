@@ -10,9 +10,10 @@ Given a binary tree, print it vertically. The following example illustrates vert
                
 			  
 The output of print this tree vertically will be:
-4
-2
-1 5 6
-3 8
-7
-9 
+
+    4
+    2
+    1 5 6
+    3 8
+    7
+    9 
