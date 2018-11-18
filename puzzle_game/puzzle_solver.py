@@ -188,6 +188,6 @@ if __name__ == '__main__':
     # board = [int(i) for i in board_string]
     # print(board_string, is_puzzle_solvable(board))
 
-    board_string = '876543021'
+    board_string = '126350478'
     board = [int(i) for i in board_string]
     print(board_string, is_puzzle_solvable(board))
