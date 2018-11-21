@@ -67,12 +67,12 @@ def construct_tree1():
 
 def test_tree1_deserialization(root_):
     assert root_.val == 1
-    assert root.left.val == 2
-    assert root.right.val == 3
-    assert root.left.left.val == 4
-    assert root.left.right.val == 5
-    assert root.right.left.val == 6
-    assert root.right.right.val == 7
+    assert root_.left.val == 2
+    assert root_.right.val == 3
+    assert root_.left.left.val == 4
+    assert root_.left.right.val == 5
+    assert root_.right.left.val == 6
+    assert root_.right.right.val == 7
 
 
 def construct_tree2():
