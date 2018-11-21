@@ -45,9 +45,6 @@ def _deserialize(serialized_tree, root):
         root.left = TreeNode(left)
         _deserialize(serialized_tree, root.left)
 
-    if not serialized_tree:
-        return
-
     right = serialized_tree.pop()
     if right:
         root.right = TreeNode(right)
