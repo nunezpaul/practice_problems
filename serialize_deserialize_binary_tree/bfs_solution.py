@@ -1,3 +1,5 @@
+import collections
+
 class TreeNode(object):
     def __repr__(self):
         return self.__str__()
@@ -11,44 +13,49 @@ class TreeNode(object):
         self.right = None
 
 
-def serialize(tree_node):
-    history = set()
+def serialize(root):
     serialized_tree = []
-    depth_first_search(tree_node, history, serialized_tree)
+    prev_level = 0
+    queue = collections.deque()
+    queue.append((0, root))
+
+    while queue:
+        curr_level, curr_node = queue.popleft()
+
+        serialized_val = curr_node.val if curr_node is not None else None
+        serialized_tree.append(serialized_val)
+
+        if curr_node is not None:
+            queue.append((curr_level + 1, curr_node.left))
+            queue.append((curr_level + 1, curr_node.right))
 
     return serialized_tree
-
-
-def depth_first_search(tree_node, history, serialized_tree):
-    if tree_node:
-        history.add(tree_node.val)
-        serialized_tree.append(tree_node.val)
-        depth_first_search(tree_node.left, history, serialized_tree)
-        depth_first_search(tree_node.right, history, serialized_tree)
-    else:
-        serialized_tree.append(None)
 
 
 def deserialize(serialized_tree):
     reversed_serialized_tree = list(reversed(serialized_tree))
     root = TreeNode(reversed_serialized_tree.pop())
-    _deserialize(reversed_serialized_tree, root)
+    queue = collections.deque([root])
+    while queue:
+        curr_node = queue.popleft()
+
+        left = reversed_serialized_tree.pop()
+        if left is not None:
+            left_node = TreeNode(left)
+            curr_node.left = left_node
+            queue.append(left_node)
+
+        right = reversed_serialized_tree.pop()
+        if right is not None:
+            right_node = TreeNode(right)
+            curr_node.right = right_node
+            queue.append(right_node)
+
     return root
 
 
-def _deserialize(serialized_tree, root):
-    if not serialized_tree:
-        return
 
-    left = serialized_tree.pop()
-    if left:
-        root.left = TreeNode(left)
-        _deserialize(serialized_tree, root.left)
 
-    right = serialized_tree.pop()
-    if right:
-        root.right = TreeNode(right)
-        _deserialize(serialized_tree, root.right)
 
 
 def construct_tree1():
