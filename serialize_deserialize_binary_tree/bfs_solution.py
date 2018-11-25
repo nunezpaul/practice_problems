@@ -54,10 +54,6 @@ def deserialize(serialized_tree):
     return root
 
 
-
-
-
-
 def construct_tree1():
     root = TreeNode(1)
     root.left = TreeNode(2)
