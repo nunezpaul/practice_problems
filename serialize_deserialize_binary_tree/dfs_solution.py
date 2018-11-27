@@ -12,19 +12,17 @@ class TreeNode(object):
 
 
 def serialize(tree_node):
-    history = set()
     serialized_tree = []
-    depth_first_search(tree_node, history, serialized_tree)
+    depth_first_search(tree_node, serialized_tree)
 
     return serialized_tree
 
 
-def depth_first_search(tree_node, history, serialized_tree):
+def depth_first_search(tree_node, serialized_tree):
     if tree_node:
-        history.add(tree_node.val)
         serialized_tree.append(tree_node.val)
-        depth_first_search(tree_node.left, history, serialized_tree)
-        depth_first_search(tree_node.right, history, serialized_tree)
+        depth_first_search(tree_node.left, serialized_tree)
+        depth_first_search(tree_node.right, serialized_tree)
     else:
         serialized_tree.append(None)
 
