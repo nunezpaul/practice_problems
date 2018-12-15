@@ -32,7 +32,7 @@ def _is_in_order(flattened_tree):
             prev_num = num
             continue
 
-        if prev_num > num:
+        if prev_num >= num:
             return False
         prev_num = num
 
